@@ -15,13 +15,14 @@ class Match(Enum):
 
 
 class SpotifyDuplicateFinder(object):
+
     @staticmethod
     def progress(count, total, suffix=''):
         """
         This function displays a progress bar on the console.
-        :param count: This number of elements that has been processed.
+        :param count: The number of elements that has been processed.
         :param total: Total number of elements.
-        :param suffix: The text to be shown behind the progress bar.
+        :param suffix: The text to be shown to the right of the progress bar.
         :return: None
         """
         bar_len = 60
@@ -49,7 +50,7 @@ class SpotifyDuplicateFinder(object):
     @staticmethod
     def http_to_uri(track_list):
         """
-        Convert a list of Spotify HTTP links to a list of Spotify URIs.
+        Convert a list of Spotify HTTP addresses to a list of Spotify URIs.
         :param track_list: The list of Spotify HTTP links to be converted.
         :return: List of Spotify URIs.
         """
@@ -105,7 +106,6 @@ class SpotifyDuplicateFinder(object):
         else:
             a = artists[0]["name"]
         return a + " - " + track["name"]
-
 
     @staticmethod
     def find_duplicates(file=open('tracks.txt', 'r'), list=None,
