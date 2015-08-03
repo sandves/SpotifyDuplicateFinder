@@ -1,4 +1,5 @@
 import unittest
+
 from spotify_duplicate_finder import SpotifyDuplicateFinder
 from spotify_duplicate_finder import Match
 
@@ -24,9 +25,10 @@ class MyTestCase(unittest.TestCase):
                      'http://open.spotify.com/track/6pIZ0u32c2Lku8PmCWtnMy '
                      'http://open.spotify.com/track/6CKAuc7LAVa1oSKk2Px2b4 '
                      'http://open.spotify.com/track/6CKAuc7LAVa1oSKk2Px2b4')
-        duplicates = SpotifyDuplicateFinder.find_duplicates(list=test_data,
-                                                            match_on=Match.URL)
-        self.assertEquals(3, len(duplicates[0]))
+        duplicates, number_of_distinct_tracks = SpotifyDuplicateFinder. \
+            find_duplicates(list=test_data, match_on=Match.URL)
+        self.assertEquals(3, len(duplicates))
+        self.assertEquals(16, number_of_distinct_tracks)
 
     def test_find_duplicates_in_list_matching_on_title(self):
         test_data = ('http://open.spotify.com/track/0QctD66Yhe2D2yjVhxtTVx '
@@ -48,14 +50,16 @@ class MyTestCase(unittest.TestCase):
                      'http://open.spotify.com/track/6pIZ0u32c2Lku8PmCWtnMy '
                      'http://open.spotify.com/track/6CKAuc7LAVa1oSKk2Px2b4 '
                      'http://open.spotify.com/track/6CKAuc7LAVa1oSKk2Px2b4')
-        duplicates = SpotifyDuplicateFinder. \
+        duplicates, number_of_distinct_tracks = SpotifyDuplicateFinder. \
             find_duplicates(list=test_data, match_on=Match.title)
-        self.assertEquals(3, len(duplicates[0]))
+        self.assertEquals(3, len(duplicates))
+        self.assertEquals(16, number_of_distinct_tracks)
 
     def test_find_duplicates_in_file_matching_on_url(self):
-        duplicates = SpotifyDuplicateFinder. \
+        duplicates, number_of_distinct_tracks = SpotifyDuplicateFinder. \
             find_duplicates(file=open('tracks_test.txt', 'r'))
-        self.assertEquals(3, len(duplicates[0]))
+        self.assertEquals(3, len(duplicates))
+        self.assertEquals(16, number_of_distinct_tracks)
 
 if __name__ == '__main__':
     unittest.main()

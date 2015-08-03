@@ -64,10 +64,10 @@ class SpotifyDuplicateFinder(object):
     @staticmethod
     def get_title(url):
         """
-        Reads the HTTP address to the song and extracts the title from the
+        Reads the HTTP address to the track and extracts the title from the
         response.
-        :param url: The HTTP address that points to the song.
-        :return: The title of the song.
+        :param url: The HTTP address that points to the track.
+        :return: The title of the track.
         """
         f = urlopen(url).read().decode("utf-8")
         s = f.find('<title>')
@@ -116,8 +116,8 @@ class SpotifyDuplicateFinder(object):
             By matching on URL, the function will find all duplicates with the
             same unique ID. By matching on title, the function will find all
             duplicates with the same name (which may be incorrect due to the
-            fact that many songs may have the same name without being the same
-            song). The title matching function is also a lot slower due to all
+            fact that many tracks may have the same name without being the same
+            track). The title matching function is also a lot slower due to all
             the HTTP requests.
 
             You will be presented with a progress bar on the console to keep
@@ -126,17 +126,17 @@ class SpotifyDuplicateFinder(object):
             :param file: The file to read the URLs from.
             :param list: The playlist can also be provided as a Python list.
             This will override the file parameter if set.
-            :return: A set of duplicates and the number of distinct songs
+            :return: A set of duplicates and the number of distinct tracks
             """
         a = []
         if match_on == Match.URL:
             if list is None:
-                songs = [word for line in file for word in line.split()]
+                tracks = [word for line in file for word in line.split()]
             else:
-                songs = list.split()
-            for idx, song in enumerate(songs):
-                a.append(song)
-                SpotifyDuplicateFinder.progress(idx, len(a), song)
+                tracks = list.split()
+            for idx, track in enumerate(tracks):
+                a.append(track)
+                SpotifyDuplicateFinder.progress(idx, len(a), track)
         elif match_on == Match.title:
             if list is None:
                 http_tracks = [word for line in file for word in line.split()]

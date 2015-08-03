@@ -1,13 +1,13 @@
-Your playlist contains 1970 distinct songs.
+Your playlist contains 1970 distinct tracks.
 Found 10 duplicates: 
 
 Martin Garrix - Animals
 Espen Lind - When Susannah Cries
-Kyla La Grange, Kygo - Cut Your Teeth - Kygo Remix
 Staut - Eit gøtt gamalt frieri
-Sugarland - Stuck Like Glue
 Milky Chance - Stolen Dance
 Dance With A Stranger - Everyone Needs A Friend
+Sugarland - Stuck Like Glue
+John Newman - Love Me Again
+Kyla La Grange, Kygo - Cut Your Teeth - Kygo Remix
 Dance With A Stranger - The Invisible Man
 Dolly Parton - Jolene
-John Newman - Love Me Again
